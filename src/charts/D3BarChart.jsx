@@ -14,24 +14,29 @@ class D3BarChart extends Component {
         this.createBarChart()
     }
     createBarChart() {
+        // node sets the ref property of the svg used for placement
         const node = this.node
         const dataMax = max(this.props.data)
         const yScale = scaleLinear()
+        // Domain is complete set of input values:
             .domain([0, dataMax])
+        // Takes size props for scaling
             .range([0, this.props.size[1]])
 
+        // Pass data to rectangle/s
         select(node)
             .selectAll('rect')
             .data(this.props.data)
             .enter()
             .append('rect')
 
-        select(node)
-            .selectAll('rect')
-            .data(this.props.data)
-            .exit()
-            .remove()
+        // select(node)
+        //     .selectAll('rect')
+        //     .data(this.props.data)
+        //     .exit()
+        //     .remove()
 
+        // Style and set attributes:
         select(node)
             .selectAll('rect')
             .data(this.props.data)
@@ -40,7 +45,7 @@ class D3BarChart extends Component {
             .attr('y', d => this.props.size[1]- yScale(d))
             .attr('height', d => yScale(d))
             .attr('width', 25)
-            .attr("style", "outline: thin solid blue;")  
+            // .attr("style", "outline: thin solid blue;")  
 
     }
     render() {
