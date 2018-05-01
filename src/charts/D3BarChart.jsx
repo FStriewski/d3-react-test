@@ -23,20 +23,27 @@ class D3BarChart extends Component {
         // Takes size props for scaling
             .range([0, this.props.size[1]])
 
-        // Pass data to rectangle/s
+            // Data join - handles the "state" of data vs. elements:
+            // Enter - leftover unbound data
+            // Update - data joined to existing elements
+            // Exit - leftover unbound elements (to be removed), e.g because less data then before after update.
+
+        // Empty selection, then joined data. Enter selection is appended. 
         select(node)
             .selectAll('rect')
             .data(this.props.data)
             .enter()
             .append('rect')
 
-        // select(node)
-        //     .selectAll('rect')
-        //     .data(this.props.data)
-        //     .exit()
-        //     .remove()
+        // Target exit selection and remove leftover elements.
+        select(node)
+            .selectAll('rect')
+            .data(this.props.data)
+            .exit()
+            .remove()
 
-        // Style and set attributes:
+
+        // Style and set SVG attributes:
         select(node)
             .selectAll('rect')
             .data(this.props.data)
@@ -45,7 +52,7 @@ class D3BarChart extends Component {
             .attr('y', d => this.props.size[1]- yScale(d))
             .attr('height', d => yScale(d))
             .attr('width', 25)
-            // .attr("style", "outline: thin solid blue;")  
+            // .attr("style", "outline: thin solid blue;") 
 
     }
     render() {
