@@ -9,10 +9,8 @@ class BarChartContainer extends Component {
                 <h3>Simple BarChart </h3>
                 <div className="row">
                     <div className="col">
-                        <div className="row">
                             <BarChartInput />
                         </div>
-                    </div>
                     <div className="col">
                         <D3BarChart data={[5, 8, 1, 3]} size={[300, 300]} />
                     </div>
