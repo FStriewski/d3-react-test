@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './BarChartInput.css'
 
 
-export default class BarChartInput extends Component {
+class BarChartInput extends Component {
 
 state = {}
 
@@ -15,7 +15,7 @@ state = {}
         const { name, value } = event.target
 
         this.setState({
-            [name]: value
+            [name]: Number(value)
         })
     }
 
@@ -53,3 +53,5 @@ state = {}
         )
     }
 }
+
+export default BarChartInput

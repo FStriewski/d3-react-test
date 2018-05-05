@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import D3BarChart from '../charts/D3BarChart'
 import BarChartInput from '../forms/BarChartInput'
+import {drawChart} from '../actions/barInput'
+import {connect} from 'react-redux'
 
 class BarChartContainer extends Component {
-
     handleInput = (input) => {
-        console.log(input)
-        return "test"
+        this.props.drawChart(input)
     }
-
 
     render() {
         return (
@@ -28,4 +27,11 @@ class BarChartContainer extends Component {
     }
 }
 
-export default BarChartContainer;
+ const mapStateToProps = function (state,props) {
+     return { 
+         barDate: state.barChart 
+        }
+ }
+
+
+export default connect(mapStateToProps, {drawChart} ) (BarChartContainer);
