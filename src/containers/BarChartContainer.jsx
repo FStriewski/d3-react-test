@@ -10,6 +10,14 @@ class BarChartContainer extends Component {
     }
 
     render() {
+
+        const barChartData = this.props.barData
+        const data = []
+        for (let i in barChartData) {
+            data.push(barChartData[i]);
+        }
+        console.log(data)
+
         return (
             <div className="App container">
                 <h3>Simple BarChart </h3>
@@ -18,7 +26,7 @@ class BarChartContainer extends Component {
                             <BarChartInput onSubmit={this.handleInput} />
                         </div>
                     <div className="col">
-                        <D3BarChart data={[5, 8, 1, 3]} size={[300, 300]} />
+                        <D3BarChart data={data} size={[300, 300]} />
                     </div>
                 </div>
                 {/* <WorldMap/> */}
@@ -29,7 +37,7 @@ class BarChartContainer extends Component {
 
  const mapStateToProps = function (state,props) {
      return { 
-         barDate: state.barChart 
+         barData: state.barChart 
         }
  }
 

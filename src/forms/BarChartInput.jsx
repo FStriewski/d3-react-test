@@ -48,7 +48,7 @@ state = {}
                         this.state.number5
                     } onChange={this.handleChange} />
                 </div>
-                <button type="submit">Show</button>
+                <button type="submit">Change</button>
             </form>
         )
     }

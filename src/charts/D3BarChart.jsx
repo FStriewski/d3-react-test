@@ -42,7 +42,7 @@ class D3BarChart extends Component {
             .exit()
             .remove()
 
-
+      
         // Style and set SVG attributes:
         select(node)
             .selectAll('rect')
@@ -52,6 +52,7 @@ class D3BarChart extends Component {
             .attr('y', d => this.props.size[1]- yScale(d))
             .attr('height', d => yScale(d))
             .attr('width', 25)
+            .text(d => d)
             // .attr("style", "outline: thin solid blue;") 
 
     }
