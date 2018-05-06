@@ -3,10 +3,6 @@ import { scaleLinear, max, select } from 'd3'
 
 
 class D3BarChart extends Component {
-    constructor(props) {
-        super(props)
-        this.createBarChart = this.createBarChart.bind(this)
-    }
     componentDidMount() {
         this.createBarChart()
     }
@@ -18,7 +14,7 @@ class D3BarChart extends Component {
         const node = this.node
         const dataMax = max(this.props.data)
         const yScale = scaleLinear()
-        // Domain is complete set of input values:
+        // Domain is the complete set of input values:
             .domain([0, dataMax])
         // Takes size props for scaling
             .range([0, this.props.size[1]])
@@ -28,15 +24,15 @@ class D3BarChart extends Component {
             // Update - data joined to existing elements
             // Exit - leftover unbound elements (to be removed), e.g because less data then before after update.
 
-        // Empty selection, then joined data. Enter selection is appended. 
-        select(node)
+        // Empty virtual selection, then joined elements. Enter selection is appended. 
+   select(node)
             .selectAll('rect')
             .data(this.props.data)
             .enter()
-            .append('rect')
-
+            .append('rect') // append rect to enter selection. Could also be a DOM el as e.g. p
+//console.log(node)
         // Target exit selection and remove leftover elements.
-        select(node)
+        select(node)    
             .selectAll('rect')
             .data(this.props.data)
             .exit()
@@ -49,13 +45,31 @@ class D3BarChart extends Component {
             .data(this.props.data)
             .style('fill', '#fe6622')   //orange fill
             .style('stroke', 'black') //black border
-            .attr('x', (d, i) => i * 35)
+            .attr('x', (d, i) => i * 35)  // x pos
+            .attr('width', 30) // width of bars
             .attr('y', d => this.props.size[1]- yScale(d))
             .attr('height', d => yScale(d))
-            .attr('width', 35)
-            .text(d => d)
+            .text("x")
             // .attr("style", "outline: thin solid blue;") 
+            // .append("text")
+            // .attr("dy", "-.35em")
+            // .attr("opacity", "0")
+            // .text(function (d) { return d; });
 
+// let text = select(node).selectAll("rect")
+//             .data(this.props.data)
+//             .enter()
+//             .append("text")
+
+//         let textLabels = text
+//         .attr("x", function (d) { return d.x; })
+//         .attr("y", function (d) { return d.y; })
+//         .text(function (d) { return "( " + d.x + ", " + d.y + " )"; })
+//         .attr("font-family", "sans-serif")
+//         .attr("font-size", "20px")
+//         .attr("fill", "red");
+
+        // console.log(textLabels)
     }
     render() {
         return (
