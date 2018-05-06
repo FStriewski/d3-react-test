@@ -47,11 +47,12 @@ class D3BarChart extends Component {
         select(node)
             .selectAll('rect')
             .data(this.props.data)
-            .style('fill', '#fe6622')
-            .attr('x', (d, i) => i * 25)
+            .style('fill', '#fe6622')   //orange fill
+            .style('stroke', 'black') //black border
+            .attr('x', (d, i) => i * 35)
             .attr('y', d => this.props.size[1]- yScale(d))
             .attr('height', d => yScale(d))
-            .attr('width', 25)
+            .attr('width', 35)
             .text(d => d)
             // .attr("style", "outline: thin solid blue;") 
 
@@ -61,7 +62,7 @@ class D3BarChart extends Component {
             <div id="barChart">
                        
                         <svg ref={node => this.node = node}
-                        width={500} height={500}>
+                        width={300} height={300}>
                     </svg>
             </div>
         )

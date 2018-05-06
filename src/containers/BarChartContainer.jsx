@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import D3BarChart from '../charts/D3BarChart'
 import BarChartInput from '../forms/BarChartInput'
-import {drawChart} from '../actions/barInput'
+import {drawChart, resetChart} from '../actions/barInput'
 import {connect} from 'react-redux'
 
 class BarChartContainer extends Component {
     handleInput = (input) => {
         this.props.drawChart(input)
+    }
+
+    handleReset = () => {
+        this.props.resetChart()
     }
 
     render() {
@@ -19,15 +23,14 @@ class BarChartContainer extends Component {
         console.log(data)
 
         return (
-            <div className="App container">
+            <div className="barChartContainer container">
                 <h3>Simple BarChart </h3>
                 <div className="row">
                     <div className="col">
-                            <BarChartInput onSubmit={this.handleInput} />
-                        </div>
-                    <div className="col">
                         <D3BarChart data={data} size={[300, 300]} />
-                    </div>
+                        <BarChartInput onSubmit={this.handleInput} onReset={this.handleReset} />
+                        <button type="reset" onClick={this.handleReset}>Reset</button>
+                        </div>
                 </div>
                 {/* <WorldMap/> */}
             </div>
@@ -42,4 +45,4 @@ class BarChartContainer extends Component {
  }
 
 
-export default connect(mapStateToProps, {drawChart} ) (BarChartContainer);
+export default connect(mapStateToProps, {drawChart, resetChart} ) (BarChartContainer);
