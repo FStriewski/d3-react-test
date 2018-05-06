@@ -23,7 +23,7 @@ class BarChartContainer extends Component {
         console.log(data)
 
         return (
-            <div className="barChartContainer container">
+            <div className="barChartContainer jumbotron ">
                 <h3>Simple BarChart </h3>
                 <div className="row">
                     <div className="col">
