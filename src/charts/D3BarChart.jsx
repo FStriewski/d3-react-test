@@ -76,7 +76,7 @@ class D3BarChart extends Component {
             <div id="barChart">
                        
                         <svg ref={node => this.node = node}
-                        width={300} height={300}>
+                    width={300} height={350}>
                     </svg>
             </div>
         )
