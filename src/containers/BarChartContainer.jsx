@@ -23,15 +23,15 @@ class BarChartContainer extends Component {
         console.log(data)
 
         return (
-            <div className="barChartContainer jumbotron ">
+            <div className="barChartContainer ">
                 <h3>Simple BarChart </h3>
                 {/* <div className="row"> */}
-                    <div className="col">
+                    {/* <div className="col"> */}
                         <D3BarChart data={data} size={[300, 300]} />
                         <BarChartInput onSubmit={this.handleInput} onReset={this.handleReset} />
-                        <button type="reset" onClick={this.handleReset}>Reset</button>
+                    <button className="btn btn-sm btn-outline-danger" type="reset" onClick={this.handleReset}>Reset</button>
                         {/* </div> */}
-                </div>
+                {/* </div> */}
                 {/* <WorldMap/> */}
             </div>
         );
