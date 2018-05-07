@@ -3,6 +3,7 @@ import D3BarChart from '../charts/D3BarChart'
 import BarChartInput from '../forms/BarChartInput'
 import {drawChart, resetChart} from '../actions/barInput'
 import {connect} from 'react-redux'
+import './Containers.css'
 
 class BarChartContainer extends Component {
     handleInput = (input) => {
@@ -24,14 +25,11 @@ class BarChartContainer extends Component {
 
         return (
             <div className="barChartContainer ">
-                <h3>Simple BarChart </h3>
-                {/* <div className="row"> */}
-                    {/* <div className="col"> */}
-                        <D3BarChart data={data} size={[300, 300]} />
-                        <BarChartInput onSubmit={this.handleInput} onReset={this.handleReset} />
-                    <button className="btn btn-sm btn-outline-danger" type="reset" onClick={this.handleReset}>Reset</button>
-                        {/* </div> */}
-                {/* </div> */}
+                <h4>Simple BarChart </h4>
+                <br/>
+                <D3BarChart data={data} size={[300, 300]} />
+                <BarChartInput onSubmit={this.handleInput} onReset={this.handleReset} />
+                <button className="btn btn-sm btn-outline-danger" type="reset" onClick={this.handleReset}>Reset</button>
                 {/* <WorldMap/> */}
             </div>
         );
