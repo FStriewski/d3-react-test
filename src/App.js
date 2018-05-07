@@ -10,12 +10,10 @@ import NavBar from './containers/NavBar'
 class App extends Component {
   render() {
     return (
-      <div className="App container">
+      <div className="App ">
       <NavBar/>
-        <div className="row">
           <div className="col-6">
         <BarChartContainer/>
-        </div>
         </div>
 
         {/* <WorldMap/> */}
